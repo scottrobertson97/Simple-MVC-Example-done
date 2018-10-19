@@ -289,7 +289,7 @@ const searchNameDog = (req, res) => {
   if (!req.query.name) {
     return res.json({ error: 'Name is required to perform a search' });
   }
-  
+
   return Dog.findByName(req.query.name, (err, doc) => {
     // errs, handle them
     if (err) {
@@ -311,6 +311,7 @@ const searchNameDog = (req, res) => {
 
     // if a match, send the match back
     // return res.json({ name: doc.name, breed: doc.breed, age: doc.age });
+    return { name: doc.name, breed: doc.breed, age: doc.age };
   });
 };
 
